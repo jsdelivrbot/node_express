@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Just damy title</title>
+    {{!-- <title>{{> title}}</title> --}}
+</head>
+<body>
+    {{{body}}}
+    <form action="#">
+        <input type="text" id="titleId" name="titleName" placeholder="title"><br> <br>
+        <input type="text" id="dataId" name="dataName" placeholder="data"><br><br>
+        <textarea name="area" id="areaId" placeholder="area"></textarea><br>
+        <button utton id="save" id="save">Save</button>
+    </form>
+ 
+    <script>
+        const save = document.getElementById('save');
+        
+        save.addEventListener('click', (ev) => {
+            ev.preventDefault();
+
+            const data = {
+                title: titleId.value,
+                data: dataId.value,
+                text: areaId.value
+            }
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/save');
+            xhr.setRequestHeader('Content-Type', 'application/json; charset=utf8')
+            xhr.send(JSON.stringify(data));
+        });
+    </script>
+</body>
+</html>
